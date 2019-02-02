@@ -6,15 +6,14 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
 public class LoginTests {
     WebDriver driver;
 
-    @BeforeClass
+    @BeforeMethod
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -28,8 +27,14 @@ public class LoginTests {
         driver.findElement(By.id("ctl00_MainContent_password")).sendKeys("test" + Keys.ENTER);
         Assert.assertEquals(driver.getTitle(), "Web Orders");
     }
+    @AfterMethod
+    public void cleanUp (){
+        driver.close();
+    }
 
-}
+    }
+
+
 
 
 
