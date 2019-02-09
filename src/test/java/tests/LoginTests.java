@@ -1,5 +1,6 @@
 package tests;
 
+import com.sun.javafx.collections.MappingChange;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -8,6 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class LoginTests {
@@ -17,6 +20,11 @@ public class LoginTests {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        Map<String,String>myMap = new HashMap<>();
+
+
+
+
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
     @Test
